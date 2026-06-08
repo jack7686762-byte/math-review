@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>數學段考複習 - 目錄</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif; background: #f0f4f8; color: #2c3e50; padding: 30px; }
+    h1 { text-align: center; color: #1a5276; font-size: 32px; margin-bottom: 5px; }
+    .subtitle { text-align: center; color: #7f8c8d; font-size: 16px; margin-bottom: 30px; }
+    .stats { text-align: center; margin-bottom: 25px; }
+    .stats span { display: inline-block; background: #2c3e50; color: white; padding: 6px 18px; border-radius: 20px; font-size: 14px; margin: 0 5px; }
+    .section { background: white; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); margin-bottom: 20px; overflow: hidden; }
+    .section-title { background: #1a5276; color: white; padding: 12px 20px; font-size: 18px; font-weight: bold; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .section-title:hover { background: #154360; }
+    .section-title .count { font-size: 13px; background: rgba(255,255,255,0.2); padding: 2px 10px; border-radius: 12px; }
+    .grid { display: none; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 8px; padding: 15px; }
+    .grid.open { display: grid; }
+    .qlink { display: block; text-align: center; padding: 8px 4px; background: #eaf2f8; border-radius: 6px; text-decoration: none; color: #2980b9; font-weight: bold; font-size: 14px; transition: all 0.2s; }
+    .qlink:hover { background: #2980b9; color: white; transform: translateY(-2px); box-shadow: 0 3px 6px rgba(41,128,185,0.3); }
+    .plink { background: #f5eef8; color: #8e44ad; }
+    .plink:hover { background: #8e44ad; color: white; }
+    .footer { text-align: center; margin-top: 30px; color: #95a5a6; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <h1>📐 數學段考複習</h1>
+  <p class="subtitle">智元數學 科學班 競賽課程 — 空間概念 · 空間向量 · 行列式 · 直線與平面</p>
+  <div class="stats">
+    <span>📋 共 96 題</span>
+    <span>📄 96 份詳解</span>
+    <span>🔄 點擊標題展開</span>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">空間概念 <span class="count">12 題</span></div>
+    <div class="grid open" data-range="1-12"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">空間向量 <span class="count">12 題</span></div>
+    <div class="grid open" data-range="13-24"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">行列式 <span class="count">7 題</span></div>
+    <div class="grid open" data-range="25-31"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">求平面與直線 <span class="count">12 題</span></div>
+    <div class="grid open" data-range="32-43"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">距離與向量綜合 <span class="count">15 題</span></div>
+    <div class="grid open" data-range="44-58"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">幾何關係與投影 <span class="count">17 題</span></div>
+    <div class="grid open" data-range="59-75"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">難題 <span class="count">8 題</span></div>
+    <div class="grid open" data-range="76-83"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" onclick="toggle(this)">計算證明 <span class="count">13 題</span></div>
+    <div class="grid open" data-list="P01,P02,P03,P04,P05,P06,P07,P08,P09,P10,P11,P12,P13"></div>
+  </div>
+
+  <div class="footer">
+    使用 <a href="https://katex.org/" target="_blank">KaTeX</a> 渲染數學公式 · 以 opencode 生成<br>
+    所有題目與答案對照請參閱 <a href="題目彙整.md">題目彙整.md</a>
+  </div>
+
+  <script>
+    function toggle(el) {
+      var grid = el.nextElementSibling;
+      grid.classList.toggle('open');
+    }
+    // Fill grids with links using data attributes
+    document.querySelectorAll('.grid').forEach(function(grid) {
+      var range = grid.getAttribute('data-range');
+      var list = grid.getAttribute('data-list');
+      var html = '';
+      if (range) {
+        var parts = range.split('-');
+        var start = parseInt(parts[0]), end = parseInt(parts[1]);
+        for (var i = start; i <= end; i++) {
+          var num = i.toString().padStart(2, '0');
+          html += '<a href="Q' + num + '.html" class="qlink">Q' + num + '</a>';
+        }
+      } else if (list) {
+        list.split(',').forEach(function(id) {
+          var type = id.charAt(0);
+          html += '<a href="' + id + '.html" class="qlink' + (type === 'P' ? ' plink' : '') + '">' + id + '</a>';
+        });
+      }
+      grid.innerHTML = html;
+    });
+  </script>
+</body>
+</html>
