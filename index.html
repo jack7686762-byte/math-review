@@ -23,6 +23,15 @@
     .plink { background: #f5eef8; color: #8e44ad; }
     .plink:hover { background: #8e44ad; color: white; }
     .footer { text-align: center; margin-top: 30px; color: #95a5a6; font-size: 13px; }
+    @media (max-width: 600px) {
+      body { padding: 15px; }
+      h1 { font-size: 24px; }
+      .subtitle { font-size: 14px; margin-bottom: 20px; }
+      .stats span { font-size: 12px; padding: 4px 12px; margin: 0 3px 5px; }
+      .section-title { font-size: 16px; padding: 10px 15px; }
+      .grid { grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); gap: 6px; padding: 10px; }
+      .qlink { font-size: 12px; padding: 6px 2px; }
+    }
   </style>
 </head>
 <body>
@@ -76,7 +85,7 @@
 
   <div class="footer">
     使用 <a href="https://katex.org/" target="_blank">KaTeX</a> 渲染數學公式 · 以 opencode 生成<br>
-    題目依空間概念、空間向量、行列式、直線與平面、距離與向量綜合、幾何關係與投影、難題、計算證明分類
+    所有題目與答案對照請參閱 <a href="題目彙整.md">題目彙整.md</a>
   </div>
 
   <script>
