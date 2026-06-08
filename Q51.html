@@ -18,6 +18,23 @@
     .formula-box { background: #eaf7ea; border: 1px solid #a9dfa9; padding: 12px; margin: 10px 0; border-radius: 6px; }
     .answer { background: #1a5276; color: white; padding: 10px 15px; border-radius: 8px; margin: 15px 0; font-size: 18px; text-align: center; }
     .svg-container { text-align: center; margin: 15px 0; background: #f9f9f9; border-radius: 8px; padding: 10px; }
+
+/* ===== Mobile Responsive ===== */
+.svg-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.svg-container svg { max-width: 100%; height: auto; }
+.solution-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.question-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.concept-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+img { max-width: 100%; height: auto; }
+@media (max-width: 600px) {
+  body { padding: 10px; }
+  .nav { flex-wrap: wrap; gap: 5px; justify-content: center; }
+  .nav a { font-size: 14px; padding: 4px 8px; }
+  h1 { font-size: 22px; }
+  .solution-box, .question-box, .concept-box { padding: 12px; }
+  .nav a { white-space: nowrap; }
+}
+
   </style>
 </head>
 <body>
